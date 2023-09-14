@@ -1,24 +1,28 @@
-// Login.js
+// Registration.js
 
 import React, { useState } from 'react';
 import axios from 'axios';
 
-function Login({ onLogin }) {
+function Registration({ onRegistration }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async () => {
+  const handleRegistration = async () => {
     try {
-      const response = await axios.post('/login', { username, password });
-      onLogin(response.data.user.username);
+      const response = await axios.post('/register', { username, password });
+      if (response.data.message === 'Registration successful') {
+        onRegistration();
+      } else {
+        console.error('Registration failed:', response.data.message);
+      }
     } catch (error) {
-      console.error(error);
+      console.error('Error during registration:', error);
     }
   };
 
   return (
     <div>
-      <h2>Login</h2>
+      <h2>Register</h2>
       <input
         type="text"
         placeholder="Username"
@@ -31,9 +35,9 @@ function Login({ onLogin }) {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleLogin}>Login</button>
+      <button onClick={handleRegistration}>Register</button>
     </div>
   );
 }
 
-export default Login;
+export default Registration;

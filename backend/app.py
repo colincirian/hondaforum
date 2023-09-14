@@ -1,13 +1,27 @@
 from flask import Flask, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS  # Import the CORS extension
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///dashboard.db'  # Use SQLite for simplicity
-db = SQLAlchemy(app)
+CORS(app)  # Enable CORS for your app
 
-# Define User and Post models here (User has a one-to-many relationship with Post).
+# Sample user data (replace with a database)
+users = [
+    {"id": 1, "username": "user1", "password": "password1"},
+    {"id": 2, "username": "user2", "password": "password2"},
+]
 
-# API routes for authentication, fetching data, and saving data go here.
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.json
+    username = data.get('username')
+    password = data.get('password')
+
+    user = next((user for user in users if user['username'] == username and user['password'] == password), None)
+
+    if user:
+        return jsonify({"message": "Login successful", "user": user}), 200
+    else:
+        return jsonify({"message": "Invalid credentials"}), 401
 
 if __name__ == '__main__':
     app.run(debug=True)
