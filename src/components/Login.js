@@ -3,16 +3,17 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-function Login({ onLogin }) {
+function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('/login', { username, password });
-      onLogin(response.data.user.username);
+      const response = await axios.post('/login', { username, password }); // Replace with your login endpoint
+      // Handle login success (e.g., set user data and navigate to the user's profile)
     } catch (error) {
       console.error(error);
+      // Handle login failure (e.g., display an error message)
     }
   };
 
@@ -37,3 +38,4 @@ function Login({ onLogin }) {
 }
 
 export default Login;
+

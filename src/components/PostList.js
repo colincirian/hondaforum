@@ -1,34 +1,14 @@
 // PostList.js
 
-import React, { useState } from 'react';
+import React from 'react';
 
-function PostList({ posts }) {
-  const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 5;
-
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-
-  const paginate = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+function PostList() {
+  // Fetch and display social media posts
 
   return (
     <div>
-      <h3>Social Media Posts</h3>
-      <ul>
-        {currentPosts.map((post) => (
-          <li key={post.id}>{post.content}</li>
-        ))}
-      </ul>
-      <ul className="pagination">
-        {Array.from({ length: Math.ceil(posts.length / postsPerPage) }).map((_, index) => (
-          <li key={index} className={index + 1 === currentPage ? 'active' : ''}>
-            <button onClick={() => paginate(index + 1)}>{index + 1}</button>
-          </li>
-        ))}
-      </ul>
+      <h2>Social Media Posts</h2>
+      {/* Display list of posts */}
     </div>
   );
 }

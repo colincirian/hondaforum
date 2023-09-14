@@ -3,20 +3,17 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-function Registration({ onRegistration }) {
+function Registration() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleRegistration = async () => {
     try {
-      const response = await axios.post('/register', { username, password });
-      if (response.data.message === 'Registration successful') {
-        onRegistration();
-      } else {
-        console.error('Registration failed:', response.data.message);
-      }
+      const response = await axios.post('/register', { username, password }); // Replace with your registration endpoint
+      // Handle registration success (e.g., display a success message and navigate to login)
     } catch (error) {
-      console.error('Error during registration:', error);
+      console.error(error);
+      // Handle registration failure (e.g., display an error message)
     }
   };
 
