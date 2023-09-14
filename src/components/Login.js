@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import './Login.css'; // Import the CSS file for styling
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -9,7 +10,7 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('/login', { username, password }); // Replace with your login endpoint
+      const response = await axios.post('/login', { username, password });
       // Handle login success (e.g., set user data and navigate to the user's profile)
     } catch (error) {
       console.error(error);
@@ -17,25 +18,40 @@ function Login() {
     }
   };
 
+  const handleCreateAccount = () => {
+    // Handle navigation or display registration form
+  };
+
   return (
-    <div>
-      <h2>Login</h2>
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleLogin}>Login</button>
+    <div className="login-container">
+      <div className="login-form">
+        <h2>Login</h2>
+        <form>
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            className="input-field"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="input-field"
+          />
+          <button onClick={handleLogin} className="login-button">
+            Login
+          </button>
+        </form>
+        <p>Don't have an account?</p>
+        <button onClick={handleCreateAccount} className="create-account-button">
+          Create an Account
+        </button>
+      </div>
     </div>
   );
 }
 
 export default Login;
-
