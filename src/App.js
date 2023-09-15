@@ -1,24 +1,27 @@
-// App.js
-
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Login from './components/Login';
 import UserProfile from './components/UserProfile';
 import PostList from './components/PostList';
-import Registration from './components/Registration';
-import Dashboard from './components/HomePage'; // Import the Dashboard component
+import Register from './components/Register';
+import Dashboard from './components/HomePage'; 
+import Navbar from './components/Navbar';
+import HomePage from './components/HomePage';
+import Login from './components/Login';
+
+
 
 function App() {
   return (
     <Router>
       <div>
         <Switch>
-          <Route path="/login" component={Login} />
+          <Route path="/" exact component={HomePage} />
           <Route path="/profile" component={UserProfile} />
           <Route path="/posts" component={PostList} />
-          <Route path="/register" component={Registration} />
-          <Route path="/dashboard" component={Dashboard} /> {/* Add the dashboard route */}
-          <Route path="/" exact component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="/dashboard" component={Dashboard} /> 
+          <Route path="/navbar" exact component={Navbar} />
+          <Route path="/login" exact component={Login} />
         </Switch>
       </div>
     </Router>
