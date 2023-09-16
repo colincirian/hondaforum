@@ -1,5 +1,3 @@
-// PostList.js
-
 import React from 'react';
 
 function PostList() {
@@ -8,7 +6,12 @@ function PostList() {
   return (
     <div>
       <h2>Social Media Posts</h2>
-      {/* Display list of posts */}
+      <form>
+        <input>
+          Hello
+        </input>
+      </form>
+
     </div>
   );
 }
