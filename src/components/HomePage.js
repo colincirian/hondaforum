@@ -6,7 +6,7 @@ function HomePage() {
   return (
     <>
       <Navbar />
-      <h1>Honda Forum</h1>
+      <h1>Honda Forummmm</h1>
       <section className="main-body">
         <div className="home-screen">
           <h3>
