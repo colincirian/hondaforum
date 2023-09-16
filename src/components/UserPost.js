@@ -1,17 +1,23 @@
-import React from 'react';
+import React, { useState } from "react";
+import "./UserPost.css";
 
 function PostList() {
-  // Fetch and display social media posts
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+
+  const handleSubmit = (e) => {
+    e.prevent.default();
+  };
 
   return (
     <div>
-      <h2>Social Media Posts</h2>
-      <form>
-        <input>
-          Hello
-        </input>
-      </form>
-
+      <h1>Create a Post!</h1>
+      <section className="user-textbox">
+        <form>
+          <label>Create a post </label>
+          <textarea required></textarea>
+        </form>
+      </section>
     </div>
   );
 }

@@ -1,11 +1,10 @@
-// Login.js
-
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom"; // Import Link and useHistory
 import "./Login.css";
 import Navbar from "./Navbar";
 import supabase from "../config/SupabseClient";
+
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState();
