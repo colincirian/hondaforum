@@ -3,7 +3,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import UserProfile from './components/UserProfile';
-import PostList from './components/PostList';
+import UserPost from './components/UserPost';
 import Register from './components/Register';
 import Dashboard from './components/HomePage'; 
 import Navbar from './components/Navbar';
@@ -17,7 +17,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/profile" component={UserProfile} />
-          <Route path="/posts" component={PostList} />
+          <Route path="/posts" component={UserPost} />
           <Route path="/register" component={Register} />
           <Route path="/dashboard" component={Dashboard} /> 
           <Route path="/navbar" exact component={Navbar} />
