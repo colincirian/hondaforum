@@ -6,23 +6,28 @@ import Navbar from "./Navbar";
 import supabase from "../config/SupabseClient";
 
 function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState('');
   const history = useHistory(); // Get the history object
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("/login", { username, password });
-      // Handle login success (e.g., set user data and navigate to the user's profile)
+      const response = await axios.post('/login', { username, password });
+      // Handle login success
+      // Assuming you have a function to set the user's authentication state
+      // e.g., setUserAuthenticated(true);
+      
+      // Redirect to the home page once login is successful
+      history.push('/');
     } catch (error) {
       console.error(error);
-      // Handle login failure (e.g., display an error message)
+      setLoginError('Login failed. Please check your credentials.');
     }
-  };
+  }
 
   const handleCreateAccount = () => {
-    // Navigate to the /register route
-    history.push("/register");
+    history.push('/register');
   };
 
   return (
@@ -57,6 +62,7 @@ function Login() {
           >
             Create an Account
           </button>
+          <p>{loginError}</p>
         </div>
       </div>
     </>
