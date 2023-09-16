@@ -1,0 +1,63 @@
+/* Add this CSS to your stylesheet or a separate CSS file */
+
+/* Style for the registration container */
+.registration-container {
+    background-color: #f5f5f5; /* Light gray background color */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Box shadow for a subtle elevation effect */
+    max-width: 400px; /* Set a maximum width for the container */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Style for the registration form */
+  .registration-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Style for the form inputs */
+  .input-field {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  /* Style for the Register button */
+  .register-button {
+    background-color: #007bff; /* Blue background color */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Style for the button on hover */
+  .register-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    color: #fff; /* White text color on hover */
+  }
+  
+  /* Style for the "Back to Login" button */
+  .back-to-login-button {
+    background: none;
+    border: none;
+    color: #007bff; /* Blue color */
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  /* Style for the button on hover */
+  .back-to-login-button:hover {
+    text-decoration: none;
+    font-weight: bold;
+  }
+  

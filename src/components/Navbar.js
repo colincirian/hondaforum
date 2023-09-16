@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import supabase from "../config/SupabseClient";
 
 function Navbar() {
   return (
