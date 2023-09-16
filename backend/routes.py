@@ -1,17 +1,16 @@
-# Add this route to your Flask app for user registration
-
 @app.route('/register', methods=['POST'])
 def register():
     data = request.json
     username = data.get('username')
+    email = data.get('email')
     password = data.get('password')
 
-    # Check if the username is already taken (you would typically query the database here)
-    if any(user['username'] == username for user in users):
-        return jsonify({"message": "Username already taken"}), 400
+    # Validate the data (e.g., check for empty fields, password strength)
+    # Hash the password for security (do not store plain text passwords)
 
-    # Add the new user to the users list (replace this with database insertion)
-    new_user = {"id": len(users) + 1, "username": username, "password": password}
-    users.append(new_user)
+    # Create a new user record in the database
+    new_user = User(username=username, email=email, password=hashed_password)
+    db.session.add(new_user)
+    db.session.commit()
 
     return jsonify({"message": "Registration successful"}), 201
