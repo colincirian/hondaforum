@@ -12,3 +12,17 @@ textarea {
     align-items: center;
     display: flex;
 }
+
+.post-container {
+    width: 60vw;
+    height: 80vh;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+body {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}

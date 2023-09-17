@@ -1,25 +1,64 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./UserPost.css";
+import { supabase } from "../config/SupabaseClient";
 
-function PostList() {
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
+function UserPost() {
+// Handle form submission
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  const username = event.target.username.value;
+  const comment = event.target.comment.value;
 
-  const handleSubmit = (e) => {
-    e.prevent.default();
-  };
+  // Insert data into the Supabase table
+  const { data, error } = await supabase
+    .from('posts')
+    .insert([{ username, comment }]);
+
+  if (error) {
+    console.error('Error inserting data:', error.message);
+  } else {
+    console.log('Data inserted successfully:', data);
+  }
+};
 
   return (
-    <div>
+    <>
       <h1>Create a Post!</h1>
-      <section className="user-textbox">
-        <form>
-          <label>Create a post </label>
-          <textarea required></textarea>
-        </form>
-      </section>
-    </div>
+      <div className="post-container">
+        <section className="user-textbox">
+          <form onSubmit={handleSubmit}>
+            <input placeholder="Username" type="text" id="username" />
+            <input placeholder="Comment" type="text" id="comment" />
+            <input type="submit" value="Post" />
+          </form>
+        </section>
+      </div>
+    </>
   );
 }
 
-export default PostList;
+export default UserPost;
+
+//   const [postContent, setPostContent] = useState("");
+//   const [posts, setPosts] = useState([]);
+
+//   useEffect(() => {
+//     // Fetch data
+//     fetchData();
+//   }, []);
+
+//   const fetchData = async () => {
+//     try {
+//       const { data, error } = await supabase
+//         .from("") // Table name
+//         .select("");
+
+//       if (error) {
+//         throw error;
+//       }
+
+//       setPost(data);
+//     } catch (error) {
+//       console.error("Error fetching data", error.message);
+//     }
+//   };

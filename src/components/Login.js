@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, useHistory } from "react-router-dom"; // Import Link and useHistory
 import "./Login.css";
 import Navbar from "./Navbar";
-import supabase from "../config/SupabseClient";
+import supabase from "../config/SupabaseClient";
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -15,8 +15,6 @@ function Login() {
     try {
       const response = await axios.post('/login', { username, password });
       // Handle login success
-      // Assuming you have a function to set the user's authentication state
-      // e.g., setUserAuthenticated(true);
       
       // Redirect to the home page once login is successful
       history.push('/');
