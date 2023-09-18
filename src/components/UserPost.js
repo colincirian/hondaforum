@@ -1,10 +1,16 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import "./UserPost.css";
 import { supabase } from "../config/SupabaseClient";
+import { click } from "@testing-library/user-event/dist/click";
 
 function UserPost() {
+
 // Handle form submission
 const handleSubmit = async (event) => {
+
   event.preventDefault();
   const username = event.target.username.value;
   const comment = event.target.comment.value;
@@ -26,10 +32,10 @@ const handleSubmit = async (event) => {
       <h1>Create a Post!</h1>
       <div className="post-container">
         <section className="user-textbox">
-          <form onSubmit={handleSubmit}>
+          <form>
             <input placeholder="Username" type="text" id="username" />
             <input placeholder="Comment" type="text" id="comment" />
-            <input type="submit" value="Post" />
+            <button type="submit">Submit Post</button>
           </form>
         </section>
       </div>
